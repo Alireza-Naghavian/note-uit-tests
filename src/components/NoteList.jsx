@@ -1,5 +1,6 @@
 import { useNotes, useNotesDispatch } from "../context/NotesContext";
 
+// eslint-disable-next-line react/prop-types
 function NoteList({ sortBy }) {
   const notes = useNotes();
 
@@ -40,7 +41,7 @@ function NoteItem({ note }) {
   };
 
   return (
-    <div className={`note-item ${note.completed ? "completed" : ""}`}>
+    <div data-testid="note-Item" className={`note-item ${note.completed ? "completed" : ""}`}>
       <div className="note-item__header">
         <div>
           <p className="title">{note.title}</p>
@@ -65,7 +66,7 @@ function NoteItem({ note }) {
           />
         </div>
       </div>
-      <p className="note-item__footer">
+      <p data-testid="date-note" className="note-item__footer">
         {new Date(note.createdAt).toLocaleDateString("en-US", options)}
       </p>
     </div>
